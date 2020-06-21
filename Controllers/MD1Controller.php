@@ -1,15 +1,23 @@
 <?php
 
-    /*$µ = 12;
-    $λ = 8;
+    $µ = $_POST['miu'];
 
-    echo(longitudPromedioCola($µ,$λ));
-    echo("\n");
-    echo(tiempoEsperaPromedioCola($µ,$λ));
-    echo("\n");
-    echo(numeroPromedioClientesSistema($µ,$λ));
-    echo("\n");
-    echo(tiempoPromedioEnSistema($µ,$λ));*/
+    $λ = $_POST['lamba'];
+
+    $operacion = $_POST['operacion'];
+
+    if($operacion=="longitudPromedioCola"){
+        echo(longitudPromedioCola($µ, $λ));
+
+    }else if($operacion=="tiempoEsperaPromedioCola"){
+        echo(tiempoEsperaPromedioCola($µ, $λ));
+
+    }else if($operacion=="numeroPromedioClientesSistema"){
+        echo(numeroPromedioClientesSistema($µ, $λ));
+        
+    }else if($operacion=="tiempoPromedioEnSistema"){
+        echo(tiempoPromedioEnSistema($µ, $λ));
+    }
 
     function longitudPromedioCola($µ, $λ){
 
