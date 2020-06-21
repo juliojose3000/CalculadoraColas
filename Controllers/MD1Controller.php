@@ -4,20 +4,15 @@
 
     $λ = $_POST['lamba'];
 
-    $operacion = $_POST['operacion'];
 
-    if($operacion=="longitudPromedioCola"){
-        echo(longitudPromedioCola($µ, $λ));
+    echo(longitudPromedioCola($µ, $λ));
 
-    }else if($operacion=="tiempoEsperaPromedioCola"){
-        echo(tiempoEsperaPromedioCola($µ, $λ));
+    echo(tiempoEsperaPromedioCola($µ, $λ));
 
-    }else if($operacion=="numeroPromedioClientesSistema"){
-        echo(numeroPromedioClientesSistema($µ, $λ));
-        
-    }else if($operacion=="tiempoPromedioEnSistema"){
-        echo(tiempoPromedioEnSistema($µ, $λ));
-    }
+    echo(numeroPromedioClientesSistema($µ, $λ));
+
+    echo(tiempoPromedioEnSistema($µ, $λ));
+    
 
     function longitudPromedioCola($µ, $λ){
 
