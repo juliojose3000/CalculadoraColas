@@ -1,18 +1,8 @@
 <?php
 
-    $µ = $_POST['miu'];
+    $µ = $_GET['mu'];
 
-    $λ = $_POST['lamba'];
-
-
-    echo(longitudPromedioCola($µ, $λ));
-
-    echo(tiempoEsperaPromedioCola($µ, $λ));
-
-    echo(numeroPromedioClientesSistema($µ, $λ));
-
-    echo(tiempoPromedioEnSistema($µ, $λ));
-    
+    $λ = $_GET['lambda'];
 
     function longitudPromedioCola($µ, $λ){
 
@@ -45,6 +35,18 @@
         return $result;
 
     }
+    $Lq=(longitudPromedioCola($µ, $λ));
+
+    $Wq=(tiempoEsperaPromedioCola($µ, $λ));
+
+    $L=(numeroPromedioClientesSistema($µ, $λ));
+
+    $W=(tiempoPromedioEnSistema($µ, $λ));
+
+    $resultado=  "L=".$L.", Lq=".$Lq.", Wq=".$Wq.", W=".$W;
+		$arrayJson = new stdClass();
+		$arrayJson->Resultado=$resultado;
+		echo json_encode($arrayJson);
 
 
 ?>

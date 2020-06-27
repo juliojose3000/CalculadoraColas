@@ -3,12 +3,43 @@
 <head>
 <meta charset="utf-8">
 <title>Expertos</title>
-<link rel="stylesheet" href="scrolling-nav.css">
-<link rel="stylesheet" href="bootstrap.min.css">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">	
+<script>
+$(document).ready(function () {
+$("#form_mm1").submit(function () {
+  var datosFormulario = $(this).serialize();
+  $.getJSON("Controllers/MM1Controller.php", datosFormulario, procesarDatosMM1);
+  return false;
+  });
+  function procesarDatosMM1(datos_devueltos) { // datosDeuveltos es el json que viene de PHP
+  $("#divMM1").html("<p>"+datos_devueltos.Resultado+"</p>");
+  }
+
+  $("#form_md1").submit(function () {
+  var datosFormulario = $(this).serialize();
+  $.getJSON("Controllers/MD1Controller.php", datosFormulario, procesarDatosMD1);
+  return false;
+  });
+  function procesarDatosMD1(datos_devueltos) { // datosDeuveltos es el json que viene de PHP
+  $("#divMD1").html("<p>"+datos_devueltos.Resultado+"</p>");
+  }
+  $("#form_mmm").submit(function () {
+  var datosFormulario = $(this).serialize();
+  $.getJSON("Controllers/MMMController.php", datosFormulario, procesarDatosMMM);
+  return false;
+  });
+  function procesarDatosMMM(datos_devueltos) { // datosDeuveltos es el json que viene de PHP
+  $("#divMMM").html("<p>"+datos_devueltos.Resultado+"</p>");
+  }
+
+
+
+
+});
+</script>
 <style>
 header {
   padding: 156px 0 100px;
@@ -76,20 +107,20 @@ section {
    <br></br>
    &Lambda;= n&uacute;mero de llegadas por periodo (por ejemplo, por hora)
    <br></br>
-    &Mu;= número medio de personas o art&iacute;culos que se atienden por periodo
+    &mu;= número medio de personas o art&iacute;culos que se atienden por periodo
     <br></br>
     k = valor del n&uacute;mero  k
 </div>
 
 <br>
-<form  id="form_mm1" action="MM1Controller.php" method="post">
+<form  id="form_mm1" nmae="form_mm1" action="Controllers/MM1Controller.php" method="get">
 <table><tr>
            <tr>
              <td>&Lambda;:</td>
              <td><input type="number" required name="lambda" id="lambda"></td>
            </tr>
            <tr>
-             <td>&Mu;:</td>
+             <td>&mu;:</td>
              <td><input type="number" required name="mu" id="mu"></td>
            </tr>
            <tr>
@@ -99,8 +130,8 @@ section {
            <tr><td colspan="2"> <input type="submit" name="boton1" id="boton1" value="Calcular">
         </td></tr></table>
 </form>
-
 </div>
+Resultado:<div id="divMM1"></div>
 </section>
 
 <section id="content2" class=container>
@@ -114,24 +145,24 @@ section {
 
 <div class="col-md-12">
   
-   Para utilizar la calculadora de colas M/M/d modelo de canales m&uacute;ltiples  con llegadas Poisson  ingrese:
+   Para utilizar la calculadora de colas M/M/M modelo de canales m&uacute;ltiples  con llegadas Poisson  ingrese:
    <br></br>
    &Lambda;= n&uacute;mero de llegadas por periodo (por ejemplo, por hora)
    <br></br>
-    &Mu;= número medio de personas o art&iacute;culos que se atienden por periodo
+    &mu;= número medio de personas o art&iacute;culos que se atienden por periodo
     <br></br>
      m = n&uacute;mero de canales abiertos
 </div>
 
 <br>
-<form  id="form_mm1" action="MMDController.php" method="post">
+<form  id="form_mmm" action="/Controllers/MMMController.php" method="get">
 <table><tr>
            <tr>
              <td>&Lambda;:</td>
              <td><input type="number" required name="lambda" id="lambda"></td>
            </tr>
            <tr>
-             <td>&Mu;:</td>
+             <td>&mu;:</td>
              <td><input type="number" required name="mu" id="mu"></td>
            </tr>
            <tr>
@@ -143,7 +174,7 @@ section {
 </form>
 
 </div>
-
+Resultado:<div id="divMMM"></div>
 </section>
 <section id="content3" class=container>
 <div class="row">  
@@ -160,26 +191,26 @@ section {
    <br></br>
    &Lambda;= n&uacute;mero de llegadas por periodo (por ejemplo, por hora)
    <br></br>
-    &Mu;=  n&uacute;mero medio de personas o art&iacute;culos que se atienden por periodo
+    &mu;=  n&uacute;mero medio de personas o art&iacute;culos que se atienden por periodo
     <br></br>
 </div>
 
 <br>
-<form  id="form_mm1" action="MD1Controller.php" method="post">
+<form  id="form_md1" action="Controllers/MD1Controller.php" method="get">
 <table><tr>
            <tr>
              <td>&Lambda;:</td>
              <td><input type="number" required name="lambda" id="lambda"></td>
            </tr>
            <tr>
-             <td>&Mu;:</td>
+             <td>&mu;:</td>
              <td><input type="number" required name="mu" id="mu"></td>
            </tr>
            <tr><td colspan="2"> <input type="submit" name="boton3" id="boton3" value="Calcular">
         </td></tr></table>
 </form>
-
 </div>
+Resultado:<div id="divMD1"></div>
 
 </section>
 <section id="content4" class=container>
@@ -204,7 +235,7 @@ section {
 </div>
 
 <br>
-<form  id="form_mm1" action="MM1InfinitoController.php" method="post">
+<form  id="form_mm1" action="/Controllers/MM1InfinitoController.php" method="post">
 <table><tr>
            <tr>
              <td>&Lambda;:</td>
