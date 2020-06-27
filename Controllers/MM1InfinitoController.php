@@ -1,9 +1,12 @@
 <?php
-
+/*
     $Λ= $_POST['lambda'];
     $µ= $_POST['mu'];
     $N= $_POST['N'];
-
+*/
+$n1= 0.05;
+$n2= 0.5;
+$n3= 5;
 
     function fact($numero){ 
         $factorial = 1; 
@@ -28,19 +31,18 @@
     function PO($Λ, $µ, $N){
         $sumatoria=0;
         for ($i = 0; $i <= $N ; $i++){ 
-            $sumatoria += ((fact($i))/(fact($N - $i))) * pow($Λ/$µ, $i);
+            $sumatoria += ((fact($N))/(fact($N - $i))) * pow($Λ/$µ, $i);
         }
         return 1 / $sumatoria;
     }
 
-    $L=L($µ, $λ,$m);
-    $LQ=Lq($µ, $λ,$m);
-    $Wq=Wq($µ, $λ, $m);
-    $P0=PO($λ,$m,$µ);
+    $L=L($n1, $n2, $n3);
+    $LQ=Lq($n1, $n2, $n3);
+    $Wq=Wq($n1, $n2, $n3);
+    $P0=PO($n1, $n2, $n3);
 
     $resultado=  "L=".$L.", Lq=".$LQ.", Wq=".$Wq.",  P0=".$P0;
     $arrayJson = new stdClass();
     $arrayJson->Resultado=$resultado;
     echo json_encode($arrayJson);
-
 ?>  
