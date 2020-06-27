@@ -34,6 +34,14 @@ $("#form_mm1").submit(function () {
   function procesarDatosMMM(datos_devueltos) { // datosDeuveltos es el json que viene de PHP
   $("#divMMM").html("<p>"+datos_devueltos.Resultado+"</p>");
   }
+  $("#form_mm1Infinito").submit(function () {
+  var datosFormulario = $(this).serialize();
+  $.getJSON("Controllers/MM1InfinitoController.php", datosFormulario, procesarDatosMM1Infinito);
+  return false;
+  });
+  function procesarDatosMM1Infinito(datos_devueltos) { // datosDeuveltos es el json que viene de PHP
+  $("#divMM1I").html("<p>"+datos_devueltos.Resultado+"</p>");
+  }
 
 
 
@@ -117,15 +125,15 @@ section {
 <table><tr>
            <tr>
              <td>&Lambda;:</td>
-             <td><input type="number" required name="lambda" id="lambda"></td>
+             <td><input type="number" step="0.0000001"  required name="lambda" id="lambda"></td>
            </tr>
            <tr>
              <td>&mu;:</td>
-             <td><input type="number" required name="mu" id="mu"></td>
+             <td><input type="number" step="0.0000001"  required name="mu" id="mu"></td>
            </tr>
            <tr>
              <td>k:</td>
-             <td><input type="number" required name="k" id="k"></td>
+             <td><input type="number" step="0.0000001"  required name="k" id="k"></td>
            </tr>
            <tr><td colspan="2"> <input type="submit" name="boton1" id="boton1" value="Calcular">
         </td></tr></table>
@@ -159,15 +167,15 @@ Resultado:<div id="divMM1"></div>
 <table><tr>
            <tr>
              <td>&Lambda;:</td>
-             <td><input type="number" required name="lambda" id="lambda"></td>
+             <td><input type="number" step="0.0000001"  required name="lambda" id="lambda"></td>
            </tr>
            <tr>
              <td>&mu;:</td>
-             <td><input type="number" required name="mu" id="mu"></td>
+             <td><input type="number" step="0.0000001"  required name="mu" id="mu"></td>
            </tr>
            <tr>
              <td>M:</td>
-             <td><input type="number" required name="m" id="m"></td>
+             <td><input type="number" step="0.0000001"  required name="m" id="m"></td>
            </tr>
            <tr><td colspan="2"> <input type="submit" name="boton2" id="boton2" value="Calcular">
         </td></tr></table>
@@ -200,11 +208,11 @@ Resultado:<div id="divMMM"></div>
 <table><tr>
            <tr>
              <td>&Lambda;:</td>
-             <td><input type="number" required name="lambda" id="lambda"></td>
+             <td><input type="number" step="0.0000001"  required name="lambda" id="lambda"></td>
            </tr>
            <tr>
              <td>&mu;:</td>
-             <td><input type="number" required name="mu" id="mu"></td>
+             <td><input type="number" step="0.0000001"  required name="mu" id="mu"></td>
            </tr>
            <tr><td colspan="2"> <input type="submit" name="boton3" id="boton3" value="Calcular">
         </td></tr></table>
@@ -224,30 +232,30 @@ Resultado:<div id="divMD1"></div>
 
 <div class="col-md-12">
   
-   Para utilizar la calculadora de colas M/D/1 modelo de tiempo de servicio constante:
+   Para utilizar la calculadora de colas  M/M/1 con fuente finita:
    <br></br>
    &Lambda;= n&uacute;mero de llegadas por periodo (por ejemplo, por hora)
    <br></br>
-    &Mu;=  n&uacute;mero medio de personas o art&iacute;culos que se atienden por periodo
+    &mu;=  n&uacute;mero medio de personas o art&iacute;culos que se atienden por periodo
     <br></br>
      N= tama&ntilde;o  de la poblaci&oacute;n
     <br></br>
 </div>
 
 <br>
-<form  id="form_mm1" action="/Controllers/MM1InfinitoController.php" method="post">
+<form  id="form_mm1Infinito" action="Controllers/MM1InfinitoController.php" method="get">
 <table><tr>
            <tr>
              <td>&Lambda;:</td>
-             <td><input type="number" required name="lambda" id="lambda"></td>
+             <td><input type="number" step="0.0000001"  required name="lambda" id="lambda"></td>
            </tr>
            <tr>
-             <td>&Mu;:</td>
-             <td><input type="number" required name="mu" id="mu"></td>
+             <td>&mu;:</td>
+             <td><input type="number" step="0.0000001"  required name="mu" id="mu"></td>
            </tr>
            <tr>
              <td>N:</td>
-             <td><input type="number" required name="N" id="N"></td>
+             <td><input type="number" step="0.0000001"  required name="N" id="N"></td>
            </tr>
            <tr><td colspan="2"> <input type="submit" name="boton4" id="boton4" value="Calcular">
         </td></tr></table>
