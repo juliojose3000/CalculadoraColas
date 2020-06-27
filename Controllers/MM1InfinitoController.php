@@ -1,12 +1,8 @@
 <?php
-/*
+
     $Λ= $_POST['lambda'];
     $µ= $_POST['mu'];
     $N= $_POST['N'];
-*/
-$n1= 0.05;
-$n2= 0.5;
-$n3= 5;
 
     function fact($numero){ 
         $factorial = 1; 
@@ -36,10 +32,10 @@ $n3= 5;
         return 1 / $sumatoria;
     }
 
-    $L=L($n1, $n2, $n3);
-    $LQ=Lq($n1, $n2, $n3);
-    $Wq=Wq($n1, $n2, $n3);
-    $P0=PO($n1, $n2, $n3);
+    $L=L($Λ, $µ, $N);
+    $LQ=Lq($Λ, $µ, $N);
+    $Wq=Wq($Λ, $µ, $N);
+    $P0=PO($Λ, $µ, $N);
 
     $resultado=  "L=".$L.", Lq=".$LQ.", Wq=".$Wq.",  P0=".$P0;
     $arrayJson = new stdClass();
